@@ -32,7 +32,7 @@ Inputs in the code:
 1. Image file path- Refer to "Running the program" above
 
 2. Color detection- In masking.py, there are some color ranges present in HSV_BOUNDS in HSV values. You can add your own HSV values to detect a specific color. The mask is created in masking.py under the make_masks function. Update 
-masks["final"] for the proper mask to be displayed. The program has functionality to assist in determining optimal color ranges. Check 4c under functionality.
+masks["final"] for the proper mask to be displayed. The program has functionality to assist in determining optimal color ranges. Check 4b iii under functionality.
 
 3. Overlay color(optional)- In masking.py, there are some preset colors in OVERLAY_COLORS. This will paint the colors you want to detect from HSV_BOUNDS the specified color. Make sure the color name matches in both HSV_BOUNDS and OVERLAY_COLORS
 
@@ -47,14 +47,17 @@ Functionality:
 
 3. Setting Reference- On the image on the left, click and drag the mouse from one end of the reference object to the other end of the reference object. Remember to set DISH_DIAMETER_MM to the proper value prior to setting the conversion factor. The conversion factor can be seen on top of the image once drawn. If the reference drawn is not satisfactory, you may redraw the reference BEFORE doing anything on the right image
 
-4. Mask Analysis- The image on the right allows you to draw a box over any area by clicking and dragging. Once done, it is in a pending state, and there are multiple options available to you. 
-    a. First, if the image name contains the word "and" or the symbol "+" it will attempt to separate the image name into the two file names. This feature is useful in the biological setting where images often contain two petri dishes with different experimental conditions. If you would like to keep the full name for the CSV file, type "3"; otherwise, type "1" or "2" based on the desired name that the code should save the data point under in the csv. A prompt will be present above the image to guide you through this process.
+4. Mask Analysis- The image on the right allows you to draw a box over any area by clicking and dragging. Once done, it is in a pending state, and there are multiple options available to you.
+5. 
+    a. First, if the image name contains the word "and" or the symbol "+" it will attempt to separate the image name into the two file names. This feature is useful in the biological setting where images often contain two petri dishes with different experimental conditions. If you would like to keep the full name for the CSV file, type "3"; otherwise, type "1" or "2" based on the desired name that the code should save the data point under in the CSV. A prompt will be present above the image to guide you through this process.
+   
     b. Next, you can only do one of these options. Desiring to choose a new option requires you to draw a new box:
+   
         i. Type the letter "y": This will confirm the box, allowing you to see the area of the mask, and will also save the data into the CSV file. This box will determine the amount of the specified mask within the box in units of mm2 or whatever your conversion factor unit is. This cannot be undone through the code, so ensure you are satisfied with the box before typing "y".
         ii. Type the letter "n": This will discard the box. Use only if you are not satisfied with the box drawn.
         iii. Type the letter "m": This will create a histogram of all the HSV values within the given box. This feature is very helpful when handling a new image, and you are unsure of the appropriate HSV values for the mask, aiding in determining accurate HSV ranges for the mask. Typing "m" will not save the box, and a new box will need to be drawn to save the box data into the CSV file.
 
-5. CSV file Data Saving- The program will automatically save the details of each data point you add. This data point is determined by 4a. i. directly above. The csv file created will be named the folder of the image file being analyzed. It will contain a couple of metrics, including: name, day, disease_mm2, light_infection_mm2, dark_infection_mm2, Scale (px/mm2)
+7. CSV file Data Saving- The program will automatically save the details of each data point you add. This data point is determined by 4a. i. directly above. The csv file created will be named the folder of the image file being analyzed. It will contain a couple of metrics, including: name, day, disease_mm2, light_infection_mm2, dark_infection_mm2, Scale (px/mm2)
 ***To remove or add or modify any of these inputs, go to the pending_entry dictionary in the on_release function in the handlers.py file.
     a. name: The name of the file. If the word day is present, it will strip it out.
     b. day: A number indicating the day that the image was taken. Will take the number after the word day.
