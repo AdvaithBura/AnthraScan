@@ -58,7 +58,9 @@ Functionality:
       iii. Type the letter "m": This will create a histogram of all the HSV values within the given box. This feature is very helpful when handling a new image, and you are unsure of the appropriate HSV values for the mask, aiding in determining accurate HSV ranges for the mask. Typing "m" will not save the box, and a new box will need to be drawn to save the box data into the CSV file.
 
 7. CSV file Data Saving- The program will automatically save the details of each data point you add. This data point is determined by 4a. i. directly above. The csv file created will be named the folder of the image file being analyzed. It will contain a couple of metrics, including: name, day, disease_mm2, light_infection_mm2, dark_infection_mm2, Scale (px/mm2)
+   
 ***To remove or add or modify any of these inputs, go to the pending_entry dictionary in the on_release function in the handlers.py file.
+
     a. name: The name of the file. If the word day is present, it will strip it out.
     b. day: A number indicating the day that the image was taken. Will take the number after the word day.
     c. disease_mm2: Area of the mask in the drawn box (in current code area of mask["final"])
